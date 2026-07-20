@@ -1,0 +1,1 @@
+Parsers generated using [kaitai struct](https://kaitai.io/#what-is-it) [files](https://github.com/matty45/crackdown_2_ksy). With [serialization](https://doc.kaitai.io/serialization.html) enabled.
