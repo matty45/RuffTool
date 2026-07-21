@@ -5,12 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug - CLI",
+            "name": "Debug - CLI - Dump DFF to JSON",
             "type": "debugpy",
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
             "args": "--dff .\\Global.dff --dump test.json"
-        }
+        },
+        {
+            "name": "Debug - CLI - Extract DFF",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
+            "args": "--dff .\\Global.dff --extract .\\Global.resblock global"
+        },
     ]
 }

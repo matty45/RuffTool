@@ -37,7 +37,7 @@ def main(
     dff: Annotated[ct.ExistingFile | None, Parameter(group=input_group)] = None,
     txp: Annotated[ct.ExistingFile | None, Parameter(group=input_group)] = None,
     dump: Annotated[Path | None, Parameter(group=action_group)] = None,
-    extract: Annotated[list[Path] | None, Parameter(group=action_group)] = None,
+    extract: Annotated[list[Path] | None, Parameter(group=action_group,consume_multiple=True)] = None,
 ) -> None:
     """Process DFF or TXP files."""
     if dump is not None:

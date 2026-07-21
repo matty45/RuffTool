@@ -5,7 +5,7 @@ from enum import IntEnum
 def obj_to_dict(obj):
     """Convert an object to a JSON-serializable dictionary."""
     if isinstance(obj, IntEnum):
-        return obj.value
+        return obj.name
 
     if hasattr(obj, '__dict__'):
         result = {}
