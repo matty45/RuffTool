@@ -4,6 +4,8 @@ from typing import Annotated
 from cyclopts import App, Group, Parameter, validators
 from cyclopts import types as ct
 
+from handlers.dff_handler import dff_dump, dff_extract
+
 app = App()
 
 input_group = Group(
@@ -16,19 +18,6 @@ action_group = Group(
     validator=validators.LimitedChoice(1),
     default_parameter=Parameter(negative=""),
 )
-
-
-def dff_dump(dff: Path, output: Path) -> None:
-    """Dump DFF file to JSON."""
-    # TODO
-    pass
-
-
-def dff_extract(dff: Path, resblock: Path, output_dir: Path) -> None:
-    """Extract DFF file using a resblock."""
-    # TODO
-    pass
-
 
 def txp_dump(txp: Path, output: Path) -> None:
     """Dump TXP file to JSON."""
