@@ -15,7 +15,7 @@ def dff_dump(dff: ExistingFile, output: Path) -> None:
     # Reading a DFF file
     with Dff.from_file(dff) as parser:
         parser._read()
-        with open(output, 'w', encoding='utf-8') as f:
+        with open(output, 'w', encoding='utf-16') as f:
             json.dump(obj_to_dict(parser.rw_stream), f, ensure_ascii=False, indent=4)
 
 def dff_extract(dff: Path, resblock: Path, output_dir: Path) -> None:

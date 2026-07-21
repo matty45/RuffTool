@@ -1,26 +1,27 @@
 """Misc util functions"""
 
+from enum import IntEnum
+
 def obj_to_dict(obj):
-    """Convert a object to a JSON-serializable dictionary."""
+    """Convert an object to a JSON-serializable dictionary."""
+    if isinstance(obj, IntEnum):
+        return obj.value
+
     if hasattr(obj, '__dict__'):
         result = {}
         for key, value in obj.__dict__.items():
-            # Skip internal attributes
             if key.startswith('_'):
                 continue
-            # Handle nested objects
-            if hasattr(value, '__dict__'):
-                result[key] = obj_to_dict(value)
-            # Handle lists
-            elif isinstance(value, list):
-                result[key] = [obj_to_dict(item) if hasattr(item, '__dict__') else item for item in value]
-            # Handle enums
-            elif hasattr(value, 'value'):
-                result[key] = value.value
-            # Handle bytes
-            elif isinstance(value, bytes):
-                result[key] = value.hex()
-            else:
-                result[key] = value
+            result[key] = obj_to_dict(value)
         return result
+
+    if isinstance(obj, list):
+        return [obj_to_dict(item) for item in obj]
+
+    if isinstance(obj, bytes):
+        return obj.hex()
+
+    if isinstance(obj, str):
+        return obj.rstrip('\x00')  # Strip null bytes from strings
+
     return obj
